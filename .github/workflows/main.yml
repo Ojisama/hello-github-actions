@@ -1,11 +1,19 @@
 name: A workflow for my Hello World file
 on: push
 jobs:
-  build:
-    name: Hello world action
+  buil1:
+    name: Hello world action1
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
     - uses: ./action-a
       env:
-        MY_NAME: "Bond. James Bond."
+        MY_NAME: "Bond1. James Bond1."
+  build2:
+    name: Hello world action2
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: ./action-a
+      env:
+        MY_NAME: "Bond2. James Bond2."

@@ -1,11 +1,29 @@
 name: A workflow for my Hello World file
 on: push
 jobs:
-  build:
-    name: Hello world action
+  test-before-file:
+    name: List files before creating
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - uses: ./action-a
-      env:
-        MY_NAME: "Bond. James Bond."
+      - name: show dir
+        run: echo $HOME
+      - name: list files
+        run: ls $HOME
+  build:
+    name: Create a file
+    runs-on: ubuntu-latest
+    needs: test-before-file
+    steps:
+      - name: show dir
+        run: echo $HOME
+      - name: create file
+        run: cd $HOME && touch test.txt
+  test-after-file:
+    name: List files after creating
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: show dir
+        run: echo $HOME
+      - name: list not empty dir
+        run: ls $HOME

@@ -1,67 +1,29 @@
 name: A workflow for my Hello World file
 on: push
 jobs:
-  buil1:
-    name: Hello world action1
+  test-before-file:
+    name: List files before creating
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - uses: ./action-a
-      env:
-        MY_NAME: "Bond1. James Bond1."
-  build2:
-    name: Hello world action2
+      - name: show dir
+        run: echo $HOME
+      - name: list files
+        run: ls $HOME
+  build:
+    name: Create a file
     runs-on: ubuntu-latest
+    needs: test-before-file
     steps:
-    - uses: actions/checkout@master
-    - uses: ./action-a
-      env:
-        MY_NAME: "Bond2. James Bond2."
-  build3:
-    name: Hello world action3
+      - name: show dir
+        run: echo $HOME
+      - name: create file
+        run: cd $HOME && touch test.txt
+  test-after-file:
+    name: List files after creating
     runs-on: ubuntu-latest
+    needs: build
     steps:
-    - uses: actions/checkout@master
-    - uses: ./action-a
-      env:
-        MY_NAME: "Bond3. James Bond2."
-  build4:
-    name: Hello world action4
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - uses: ./action-a
-      env:
-        MY_NAME: "Bond4. James Bond2."
-  build5:
-    name: Hello world action5
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - uses: ./action-a
-      env:
-        MY_NAME: "Bond5. James Bond2."
-  build6:
-    name: Hello world action6
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - uses: ./action-a
-      env:
-        MY_NAME: "Bond6. James Bond2."
-  build7:
-    name: Hello world action7
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - uses: ./action-a
-      env:
-        MY_NAME: "Bond7. James Bond7."
-  build8:
-    name: Hello world action8
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - uses: ./action-a
-      env:
-        MY_NAME: "Bond8. James Bond2."
+      - name: show dir
+        run: echo $HOME
+      - name: list not empty dir
+        run: ls $HOME

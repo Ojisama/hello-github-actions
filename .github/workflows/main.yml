@@ -17,3 +17,51 @@ jobs:
     - uses: ./action-a
       env:
         MY_NAME: "Bond2. James Bond2."
+  build3:
+    name: Hello world action3
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: ./action-a
+      env:
+        MY_NAME: "Bond3. James Bond2."
+  build4:
+    name: Hello world action4
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: ./action-a
+      env:
+        MY_NAME: "Bond4. James Bond2."
+  build5:
+    name: Hello world action5
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: ./action-a
+      env:
+        MY_NAME: "Bond5. James Bond2."
+  build6:
+    name: Hello world action6
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: ./action-a
+      env:
+        MY_NAME: "Bond6. James Bond2."
+  build7:
+    name: Hello world action7
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: ./action-a
+      env:
+        MY_NAME: "Bond7. James Bond7."
+  build8:
+    name: Hello world action8
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: ./action-a
+      env:
+        MY_NAME: "Bond8. James Bond2."
